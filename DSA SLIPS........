@@ -1,1 +1,1937 @@
+##//Slip 1_1: .Implement a list library (doublylist.h) for a doubly linked list of integers with
+//the create, display operations. Write a menu driven program to call these operations.
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+struct node
+{
+ int data;
+ struct node*next,*prev;
+};
+
+struct node* create(struct node* list)
+{
+ int i,n;
+ struct node*newnode,*temp;
+ printf("Enter Limit-");
+ scanf("%d",&n);
+ for(i=0;i<n;i++)
+ {
+  newnode=(struct node *)malloc(sizeof(struct node));
+  printf("Enter value-");
+  scanf("%d",&newnode->data);
+  newnode->next=NULL;
+   if(list==NULL)
+   {
+    list=newnode;
+    temp=newnode;
+   }
+   else
+   {
+    temp->next=newnode;
+    newnode->prev=temp;
+    temp=newnode;
+   }
+ }
+ return list;
+}
+
+void display( struct node *list)
+{
+ struct node *temp;
+ for(temp=list;temp!=NULL;temp=temp->next)
+ {
+  printf("%d\t",temp->data);
+ }
+}
+
+int main()
+{
+ int i;
+struct node *list=NULL;//////imp
+list=create(list);
+display(list);
+}
+
+##//Slip 1_2, Slip 13_2: Write a program that sorts the elements of linked list using any of sorting
+technique / Sort linked list using bubble sort
+
+#include<stdio.h>
+#include<malloc.h>
+struct node
+{         
+ int data;
+ struct node *next;
+};     
+
+struct node *create(struct node *head)   //function
+{
+int i,n;
+struct node *newnode,*temp;
+printf("Enter limit");              //variable declaration
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+  newnode=(struct node *)malloc(sizeof(struct node));
+  printf("enter value");
+  scanf("%d",&newnode->data);
+  newnode->next=NULL;
+  
+  if(head==NULL)
+  {
+     head=temp=newnode;
+  }
+  else
+  {
+   temp->next=newnode;
+   temp=newnode;
+  }
+}
+ return head;
+}
+void disp(struct node *head)
+{
+ struct node *temp;
+ for(temp=head;temp!=NULL;temp=temp->next)
+ {
+   printf("%d\t",temp->data);
+ }
+}
+
+ struct node*sort(struct node *head)
+ {
+  int t;
+  struct node *i,*j;
+  for(i=head;i!=NULL;i=i->next)
+  {
+   for(j=head;j!=i;j=j->next)
+   {
+    if(i->data>j->data)
+    {
+     t=i->data;
+     i->data=j->data;
+     j->data=t;
+     }
+    }
+  }
+  return head;
+ }
+ 
+
+ int main()
+ {
+ struct node *head=NULL;
+ head=create(head);
+ head=sort(head);
+ disp(head);
+ }
+
+##//Slip 2_1: Implement a list library (singlylist.h) for a singly linked list of integer with the
+//operations create, display. Write a menu driven program to call these operations
+
+
+struct node
+{         
+ int data;
+ struct node *next;
+};     
+
+struct node *create(struct node *head)   //function
+{
+int i,n;
+struct node *newnode,*temp;
+printf("Enter limit");              //variable declaration
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+  newnode=(struct node *)malloc(sizeof(struct node));
+  printf("enter value");
+  scanf("%d",&newnode->data);
+  newnode->next=NULL;
+  
+  if(head==NULL)
+  {
+     head=temp=newnode;
+  }
+  else
+  {
+   temp->next=newnode;
+   temp=newnode;
+  }
+}
+ return head;
+}
+void disp(struct node *head)
+{
+ struct node *temp;
+ for(temp=head;temp!=NULL;temp=temp->next)
+ {
+   printf("%d\t",temp->data);
+ }
+}
+
+ int main()
+ {
+ struct node *head=NULL; impppppppppppppppppp
+ head=create(head);
+  disp(head);
+ }
+
+##Slip 2_2 ,Slip 8_2, Slip 17_2:Write a program that copies the contents of one stack into
+another. Use stack library to perform basic stack operations. The order of two stacks must
+be identical.(Hint: Use a temporary stack to preserve the order).
+#include<stdio.h>
+struct stack
+{
+int data[100];
+int top;
+};
+
+void init(struct stack *s)
+{
+s->top=-1;
+}
+void push(struct stack *s,int val)
+{
+s->top++;
+s->data[s->top]=val;
+}
+void disp(struct stack s) imppppppppppppppppp
+{
+ int i;
+ for(i=s.top;i>=0;i--)
+ {
+  printf("%d\t",s.data[i]);
+ }
+}
+
+int main()
+{
+ struct stack s1,s2,temp;
+ int i,n,val;
+ 
+ init(&s1);
+ init(&s2);
+ init(&temp);
+ printf("Enter limit of stack");
+ scanf("%d",&n);
+ for(i=0;i<n;i++)
+ {
+  printf("Enter value");
+  scanf("%d",&val);
+  push(&s1,val);
+}
+//copy the contents of s1 to temp stack..........
+for(i=s1.top;i>=0;i--)
+{
+ push(&temp,s1.data[i]);
+}
+//copy the contents of temp stack to s2..........
+
+for(i=temp.top;i>=0;i--)
+{
+ push(&s2,temp.data[i]);
+}
+printf("DISPLAY ORIGNAL STACK");
+disp(s1);
+printf("DISPLAY COPY STACK");
+disp(s2);
+}
+
+
+
+
+Slip 3_1 : Sort a random array of n integers (accept the value of n from user) in
+ascending order by using insertion sort algorithm.
+
+for(i=1;i<n;i++)
+{
+ num=a[i];
+ for(j=i-1;j>=0&&num<a[j];j--)
+ {
+  t=a[j+1];
+  a[j+1]=a[j];
+  a[j]=t;
+  }
+  }
+  printf("sorted nos");'
+  for(i=0;i<n;i++)
+  {
+   printf("%d\t",a[i]);
+  }
+
+
+//Slip 3_2 : Write a C program to evaluate postfix expression.
+          OR
+//Slip 16_2 : A postfix expression of the form ab+cd-*ab/ is to be evaluated after accepting
+//the values of a, b, c and d. Formulate the problem and write a C program to solve the
+//problem by using stack.
+#include<stdio.h>
+#define MAX 5
+struct stack
+{
+ int a[MAX];
+ int top;
+}s1;
+
+void init()
+{
+ s1.top=-1;
+}
+
+int isempty()
+{
+ if(s1.top==-1)
+  return 1;
+  else
+  return 0;
+}
+
+int isfull()
+{
+  if(s1.top==MAX-1)
+  return 1;
+  else
+  return 0;
+}
+
+void push(int num)
+{
+ if(isfull())
+ {
+  printf("STACK IS FULL DON'T PUSH");
+ }
+ else
+ {
+  s1.top++;
+  s1.a[s1.top]=num;
+  
+ }
+}
+//POP FUNCTION MADHE VALUE RETURN KARANE..................
+char pop()
+{
+ int val;
+ if(isempty())
+ {
+  printf("STACK IS EMPTY DON'T POP");
+ }
+ else
+ {
+  val=s1.a[s1.top];
+  s1.top--;
+  return val;
+ }
+}
+//********************************************************
+void postfix_eval(char s1[100])            //|
+{                                //|
+int i,val1,val2,val;                      
+for(i=0;s1[i]!='\0';i++)
+{
+switch(s1[i])
+{
+case '+':
+      val1=pop();
+      val2=pop();
+      push(val2+val1);
+      break;
+case '-':
+     val1=pop();
+     val2=pop();
+     push(val2-val1);
+     break;
+case '*':
+      val1=pop();
+      val2=pop();
+      push(val2*val1);
+      break;
+case '/':
+      val1=pop();
+      val2=pop();
+      push(val2/val1);
+      break;
+      
+default:printf("Enter value of %c ",s1[i]);
+scanf("%d",&val);
+push(val);
+}
+}
+
+printf("Ans =%d ",pop());                          //|
+}                                           //|
+//*******************************************************************************
+int main()
+{
+char s1[100];
+printf("Enter postfix string ");
+scanf("%s",s1);
+postfix_eval(s1);
+}
+
+=========output=
+
+Slip 4_1:Read the ‘n’ numbers from user and sort using bubble sort
+
+Solution :
+#include <stdio.h>
+void main(){
+int a[100],i,n,temp;
+printf("enter limit :");
+scanf("%d",&n);
+printf("enter n numbers :");
+for(i=0;i<n;i++)
+{
+scanf("%d",&a[i]);
+}
+
+for(pass=1;pass<n;pass++)
+{
+ for(i=0;i<n-pass;i++)
+ {
+  if(a[i]>a[i+1])
+  {
+ temp=a[i];
+ a[i]=a[i+1];
+ a[i+1]=temp;
+}
+}
+printf("sorte");
+for(i=0;i<n;i++)
+{
+printf("%d\t",a[i]);
+}
+}
+
+
+Slip 5_1, Slip 14_1:.Create a random array of n integers. Accept a value x from user and use
+linear search algorithm to check whether the number is present in the array or not and output
+the position if the number is present.Solution :
+#include<stdio.h>
+
+int main()
+{
+int n,i,a[100];
+printf("enter limit");
+scanf("%d",&n);
+printf("Enter n numners");
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("\n enter number to search element");
+scanf("%d",&num);
+ 
+for(i=0;i<n;i++)
+{
+ if(a[i]==num
+ {
+  flag=1;
+  break;
+ }
+}
+if(flag==1)
+{
+ printf("found posn=%d",i);
+}
+printf("not found")
+}
+
+##Slip 5_2 ,Slip 11_2 ,Slip 23_1 : Implement a priority queue library (PriorityQ.h) of
+integers using a static implementation of the queue and implement the below two
+operations. 1) Add an element with its priority into the queue. 2) Delete an element from
+queue according to its priority.
+//priority QUEUE
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+int a[20];
+int front,rear;
+void initq()
+{
+ front=-1;
+ rear=-1;
+}
+
+int isempty()
+{
+ if(front==rear)
+  return 1;
+ else
+ return 0;
+}
+                //vimp......................................
+                      //vimp..................................
+int isfull()                       //IF CHYA CONDITION MADHE = = TAKNE...
+{
+ if(rear==MAX-1)
+  return 1;
+ else
+ return 0;
+}
+
+void Add(int num)
+{
+int i;
+if(isfull()==1)
+printf("Queue is Full ");
+else
+{
+for(i=rear;i>front;i--)
+{
+if(num<a[i])
+a[i+1]=-a[i];
+else
+}
+a[i+1]=num;
+rear++;
+}
+}
+int Delete()
+{
+int num;
+if(isempty()==1)
+printf("Queue is empty ");
+else
+{
+front++;
+num=front;
+}
+return num;
+}
+
+void display()
+{
+ int i;
+ for(i=front+1;i<=rear;i++)
+ {
+  printf("%d\t",a[i]);
+ }
+}
+
+int main()
+{
+ int i,num,ch;
+ initq();
+ do
+ {
+ printf("\n1-insert \n2-delete \n3-display");
+ printf("enter choice");
+ scanf("%d",&ch);
+ switch(ch)
+ {
+  case 1: 
+         printf("Enter value-");
+         scanf("%d",&num);
+         Add(num);
+         break;
+ case 2:
+       Delete();
+       break;
+ case 3:
+      display();
+      break;
+ }
+ }while(ch<4);
+}
+
+
+##Slip 6_1, Slip 15_1, Slip 18_1, Slip 19_1
+: a random array of n
+Sort
+integers (accept the value of n from user) in ascending order by using
+selection sort algorithm.
+
+//ACCEPT N NUMBERS AND SORT USING SELECTION SORT METHOD.
+#include<stdio.h>
+int main()
+{
+int a[100],i,j,n,min,index,t;
+ printf("Enter Limit");
+ scanf("%d",&n);
+ printf("Enter N Numbers=");
+ for(i=0;i<n;i++)
+ {
+  scanf("%d",&a[i]);
+ }
+ 
+ for(i=0;i<n;i++)
+ {
+  min=a[i];
+  index=i;
+    for(j=i;j<n;j++)
+    { 
+     if(a[j]<min)
+      {
+       min=a[j];
+       index=j;
+       }
+      }
+       t=a[i];
+       a[i]=a[index];
+       a[index]=t;
+      }
+  print("Sorted Array=");
+  for(i=0;i<n;i++)
+  {
+   printf("%d\t",a[i]);
+  }
+}
+
+Slip 6_2 : Implement a queue library (dyqueue.h) of integers using a dynamic (linked list)
+implementation of the queue and implement init, enqueue, dequeue, isempty, peek
+operations.
+(DYNAMIC LINEAR QUEUE........)
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+ int data;
+ struct node *next;
+};
+struct node *newnode,*temp,*front,*rear;
+void init()
+{
+ front=rear=NULL;
+}
+int isempty()
+{
+ if(front==NULL)
+ {
+  return 1;
+ }
+ else 
+ return 0;
+}
+//dynamic madhe isfull nhi.............
+void insert(int num)
+{
+ newnode=(struct node*)malloc(sizeof(struct node));
+ newnode->data=num;
+ newnode->next=NULL;
+ if(front==NULL)
+ {
+  front=rear=newnode;
+ }
+ else
+ {
+  rear->next=newnode;
+  rear=newnode;
+ }
+ printf("Insert succ........");
+}
+
+void delete()
+{
+ int val;
+ if(isempty())
+ {
+ printf("Queue is empty dont deleette");
+ }
+ else
+ {
+  val=front->data;
+  temp=front;
+  front=front->next;
+  free(temp);
+  printf("Deleted value=%d",val);
+ }
+}
+
+void display()
+{
+ struct node *temp;
+ for(temp=front;temp!=NULL;temp=temp->next)
+ {
+  printf("%d\t",temp->data);
+ }
+}
+
+int main()
+ {
+  init();
+  int i,n,ch,num;
+  do
+ {
+  printf("\n1-INSERT \n2-DELETE \n3-DISPLAY");
+  printf("\nEnter Choice-");
+  scanf("%d",&ch);
+  switch(ch)
+  {
+   case 1:
+        printf("Enter Number-");
+        scanf("%d",&num);
+        insert(num);
+        break;
+  case 2:
+        delete();
+        break;
+        //...............................OR....................................................................................>
+      
+  
+  case 3:
+       display();
+       break;
+  }
+ }while(ch<4);
+}
+ 
+
+
+
+
+
+
+##Slip 7_1 : Sort a random array of n integers (accept the value of n from user) in ascending
+order by using quick sort algorithm.
+
+#include<stdio.h>
+void quicksort(int a[10],int lb,int ub)
+{
+int key,temp,i,j;
+if(lb<ub)
+{
+i=lb+1;
+key=a[lb];
+j=ub;
+while(i<=j)
+{
+while(a[i]<=key && i<=ub)
+i++;
+while(a[j]>key && j>=lb)
+j--;
+if(i<j)
+{
+temp=a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+}
+
+temp=a[j];
+a[j]=a[lb];
+a[lb]=temp;
+quicksort(a,lb,j-1);
+quicksort(a,j+1,ub);
+}
+}
+
+int main()
+{
+ int a[100],i,j,n,lb,ub;
+ printf("Enter Limit");
+ scanf("%d",&n);
+ printf("Enter n numbers-");
+ for(i=0;i<n;i++)
+ {
+  scanf("%d",&a[i]);
+ }
+ quicksort(a,0,n-1);
+ printf("Sorted array is-");
+ for(i=0;i<n;i++)
+ printf("%d\t",a[i]);
+}
+
+##Slip7_2 : Write a program that checks whether a string of characters is palindrome or not.
+The function should use a stack library (cststack.h) of stack of characters using a static
+implementation of the stack
+
+#include<stdio.h>
+#define MAX 50
+struct stack
+{
+ char a[MAX];
+ int top;
+}s1;
+
+void init()
+{
+ s1.top=-1;
+}
+void isfull()
+{
+ if(s1.top==MAX-1)
+ {
+ return 1;
+ }
+ else
+ return 0;
+ }
+ void push(char c)
+ {
+  if(isfull())
+  {
+   printf("stack is full d push");
+  }
+  else
+  {
+   s1.top++;
+   s1.a[s1.top]=c;
+  }
+int isempty()
+{
+ if(s1.top==-1)
+ {
+ return 1;
+ }
+ else
+ return 0;
+ }
+ char pop()
+ {
+  char val;
+  if(isempty())
+  {
+   printf("stack is emptyl d pop");
+  }
+  else
+  {
+   val=s1.a[s1.top];
+   s1.top--;
+   return val;
+  }
+ 
+ 
+ int main()
+ {
+  char s[20];
+  int i;
+  init();
+  printf("enter string");
+  gets(s1);
+  for(i=0;s[i]!='\0';i++)
+  {
+   push(s[i]);
+  }
+  for(i=0;s1[i]!='\0';i++)
+  {
+   if(s1[i]!=pop())
+   break;
+  }
+  if(isempty())
+  printf("palindrome.............");
+ }
+ 
+ 
+ ##Slip 8-1: Implement a list library (singlylist.h) for a singly linked list of integer With the
+operations create, delete specific element and display. Write a menu driven program to call
+these operations.
+struct node
+{         
+ int data;
+ struct node *next;
+};     
+
+struct node *create(struct node *head)   //function
+{
+int i,n;
+struct node *newnode,*temp;
+printf("Enter limit");              //variable declaration
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+  newnode=(struct node *)malloc(sizeof(struct node));
+  printf("enter value");
+  scanf("%d",&newnode->data);
+  newnode->next=NULL;
+  
+  if(head==NULL)
+  {
+     head=temp=newnode;
+  }
+  else
+  {
+   temp->next=newnode;
+   temp=newnode;
+  }
+}
+ return head;
+}
+void disp(struct node *head)
+{
+ struct node *temp;
+ for(temp=head;temp!=NULL;temp=temp->next)
+ {
+   printf("%d\t",temp->data);
+ }
+}
+struct node *delete(struct node *head,int pos)
+{
+ int i;
+ struct node *temp,*temp1;
+ if(pos==1)
+ {
+  temp=head;
+  head=temp->next;
+  free(temp);
+ }
+ else
+ {
+  for(i=1,temp=head;i<pos-1&&temp->next!=NULL;i++,temp=temp->next);
+  temp1=temp->next;
+  temp->next=temp1->next;
+  free(temp1);
+ }
+ return head;
+}
+ int main()
+ {
+ struct node *head=NULL;
+ head=create(head);
+  disp(head);
+  printf("Enter position");
+  scanf("%d",&pos);
+  delete(pos);
+ }
+
+ ##Slip 9_1,Slip 25_2 Write
+:
+a program to convert an infix expression of the form (a*(b+c)*((da)/b))
+into its equivalent postfix notation. Consider usual precedence’s of operators. Use stack library of
+stack of characters using static implementation.
+
+INCOMPLETE......................
+
+ ##Slip 9_1:Read the data from the ‘employee.txt’ file and sort on age using Counting sort or Quick sort
+and write the sorted data to another file 'sortedemponage.txt'.
+Slip 28_2 :Read the data from the ‘employee.txt’ file and sort on age using Merge sort or Quick sort
+and write the sorted data to another file 'sortedemponage.txt
+
+INCOMPLETE.................
+
+##Slip 10_1 ,22_1:Implement a linear queue library (st_queue.h) of integers using a static
+implementation of the queue and implementing the init(Q), add(Q) and peek(Q) operations. Write a
+program that includes queue library and calls different queue operations
+
+ekda run krava lagel.................
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+#define MAX 5
+struct Queue
+{
+ int data[MAX];
+ int front,rear;
+}*q;
+
+void init()
+{
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvimppppppppppppppppppppppppppppppppppppppppppppppppppp
+ q=(struct Queue*)malloc(sizeof(struct Queue)); ///////////impppppppppppppppppppppp
+ q->front=q->rear=-1;
+}
+
+int isempty()
+{
+ if(q->front==-1||q->front>q->rear)
+ {
+  return 1;
+ }
+ else
+ {
+ return 0;
+ }
+}
+
+int isfull()
+{
+ if(q->rear==MAX-1)
+ {
+  return 1;
+ }
+ else
+ {
+ return 0;
+ }
+}
+
+void insertq(int num)
+{
+ if(isfull())
+ {
+  printf("full");
+ }
+ else
+ {
+  if(q->front==-1) //vvvvvvvvvvvimp
+  {
+   q->front=0;
+  }                    imp not ude else
+  q->rear++;
+  q->data[q->rear]=num;
+  printf("Insert succ........");
+ }
+}
+
+void deleteq()
+{
+ int val;
+ if(isempty())
+ {
+  printf("Empty...");
+ }
+ else
+ {
+  val=q->data[q->front];
+  q->front++;
+  printf("Deleted value=%d",val);
+ }
+}
+void display()
+{
+ int i;
+ for(i=q->front;i<=q->rear;i++)
+ {
+  printf("%d\t",q->data[i]);
+ }
+}
+int main()
+{
+  init();
+  int i,n,ch,num;
+  do
+ {
+  printf("\n1-INSERT \n2-DELETE \n3-DISPLAY");
+  printf("\nEnter Choice-");
+  scanf("%d",&ch);
+  switch(ch)
+  {
+   case 1:printf("Enter Value-");
+        scanf("%d",&num);
+        insertq(num);
+        break;
+  case 2:
+        deleteq();
+        break;
+        //...............................OR....................................................................................>
+      
+  
+  case 3:
+       display();
+       break;
+  }
+ }while(ch<4);
+}
+
+
+
+
+##Slip10_2, 30_1 :Read the data from the file “employee.txt” and sort on names in
+alphabetical order (use strcmp) using bubble sort or selection sort.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+ struct employee
+ {
+  char ename[20];
+  int age;
+  float salary;
+ }e1[100];
+ FILE *fp1;
+ int i=0,n,pass;
+ char t[20];
+ fp1=fopen("employee.txt","r");
+ if(fp1==NULL)
+ {
+  printf("file not found");
+  exit(0);
+ }
+ while(!feof(fp1))
+ {
+ fscanf(fp1,"%s%d%f",e1[i].ename,&e1[i].age,&e1[i].salary);
+ i++;
+ }
+ n=i;
+ i=0;
+ 
+  for(pass=1;pass<n;pass++)
+  {
+    for(i=0;i<n-pass;i++)
+    {
+      if(strcmp(e1[i].ename,e1[i+1].ename)>0)
+      {
+       strcpy(t,e1[i].ename);
+       strcpy(e1[i].ename,e1[i+1].ename);                //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvimp
+       strcpy(e1[i+1].ename,t);
+      }
+   }
+ }
+      printf("Sorted Names=");
+      for(i=0;i<n;i++)
+      {
+       printf("%s\t",e1[i].ename);
+      }
+  
+
+}
+
+
+##Slip 11_1: Accept n values in array from user. Accept a value x from user and use sentinel
+linear search algorithm to check whether the number is present in the array or not and
+output the position if the number is present
+
+#include<stdio.h>
+    int main()
+    {
+  int a[100],i,n,key,flag=0;
+  printf("Enter limit");
+  scanf("%d",&n);
+  printf("enter n numners");
+  for(i=0;i<n;i++)
+  {
+   scanf("%d",&a[i]);
+  }                                // AFTER WHILE LOP USE I=0;
+  printf("enter no to search");
+  scanf("%d",&key);
+
+ a[n]=key;
+ i=0;//impppppppppppppppppppppppppppppppppppppppppp
+ while(a[i]=key)
+ {
+  i++;  
+ }
+ if(i=n)
+ {
+  printf("not found");
+  }
+  else
+  {
+   printf("found");
+  }
+ 
+Slip 12_1 : 'Read the data from file 'cities.txt' containing names of cities and their STD
+codes. Accept a name of the city from user and use linear search algorithm to check
+whether the name is present in the file and output the STD code, otherwise output “city not
+in the list”.
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<stddef.h>
+int main() imppppppppppppppppppp
+{
+ struct city
+ {
+  char name[30];
+  int scode;
+ }c1[100];
+ 
+ FILE *fp1;    //DECLRE
+ int i=0,n;
+ char cname[30];
+ fp1=fopen("cities.txt","r");         //OPEN
+ if(fp1==NULL)
+ {                    //CHECK
+  printf("file not found");
+  exit(0);
+ }
+ while(!feof(fp1))
+ {                                //read
+  fscanf(fp1,"%d%s",&c1[i].scode,c1[i].name);                  //vvvvv imp fp1,
+  i++;
+  //<b>warning: </b></span>passing argument 2 
+  //4 |   fscanf("%s%d",&c1[i].name,&c1[i].scode);
+   //   |                 ^~~~~~~~~~~
+  //THIS ERROR CAN GIVE THE FSCANF HAVE TWO ARGUMENT (fp1,%dsf)
+ }
+ 
+ 
+n=i;
+printf("Enter City name to search");
+scanf("%s",cname);
+for(i=0;i<n;i++)
+{
+ if(strcmp(c1[i].name,cname)==0)
+ {
+  break;
+ }
+}
+ if(i==n)
+ {
+  printf("name is not found");
+ }
+ else
+ {
+  printf("name is found.......");
+  }
+ fclose(fp1);
+}
+
+
+
+Slip 12_2, Slip 15_2,Slip24_1 :Implement a circular queue library (cir_queue.h) of
+integers using a dynamic (circular linked list) implementation of the queue and
+implementing init(Q), AddQueue(Q) and DeleteQueue(Q) , peek(Q) operations. Write amenu driven program that includes queue library and calls different queue operations.
+//ciruclar queue dynamic
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+ int data;
+ struct node *next;
+};
+struct node *newnode,*temp,*front,*rear;
+void init()
+{
+ front=rear=NULL;
+}
+int isempty()
+{
+ if(rear==NULL)
+ {
+  return 1;
+ }
+ else 
+ return 0;
+}
+
+void Addqueue(int num)
+{
+ newnode=(struct node*)malloc(sizeof(struct node));
+ newnode->data=num;
+ if(rear==NULL)
+ {
+  front=rear=newnode;
+  rear->next=front;
+ }
+ else
+ {
+  newnode->next=front;
+  rear->next=newnode;
+  rear=newnode;
+  
+ }
+ printf("Insert succ........");
+}
+
+void delqueue()
+{
+ int val;
+ if(isempty())
+ {
+ printf("Queue is empty dont deleette");
+ }
+ else
+ {
+  val=front->data;
+  temp=front;
+  
+  if(front->next=front)
+  {
+   free(front);
+  }
+  else
+  {
+   front=front->next;
+   rear->next=front;
+   free(temp);
+  }
+}
+  printf("Deleted value=%d",val);
+ }
+
+
+void display()
+{
+ temp=front;
+ do
+ {
+  printf("%d\t",temp->data);
+  temp=temp->next;
+ }while(temp!=front);
+}
+
+int main()
+ {
+  init();
+  int i,n,ch,num;
+  do
+ {
+  printf("\n1-Addqueue \n2-delqueue \n3-DISPLAY");
+  printf("\nEnter Choice-");
+  scanf("%d",&ch);
+  switch(ch)
+  {
+   case 1:
+        printf("Enter Number-");
+        scanf("%d",&num);
+        Addqueue(num);
+        break;
+  case 2:
+        delqueue();
+        break;
+        //...............................OR....................................................................................>
+      
+  
+  case 3:
+       display();
+       break;
+  }
+ }while(ch<4);
+}
+ 
+
+
+
+#############Slip 13_1, Slip 20_1 , Slip 26_1, Slip 29_1,Slip28_1Implement
+:
+(ststack.h) of integers using a static implementation of the stack and implementing the
+operations like init(S), S=push(S), isFull(S). Write a driver program that includes stack
+library and calls different stack operations.
+#define MAX 5
+struct stack
+{
+ int a[MAX];
+ int top;
+}s1;
+
+void init()
+{
+ s1.top=-1;
+}
+
+int isempty()
+{
+ if(s1.top==-1)
+ return 1;
+ elde
+ return 0;
+}
+
+int isfull()
+{
+ if(s1.top==MAX-1)
+ {
+  return 1;
+  else
+  return 0;
+ }
+ 
+ void push(int num)
+ {
+  if(isfulll())
+  printf("stack is full");
+  else
+  {
+    s1.top++;
+    s1.a[s1.top]=num;
+    printf("push succ,,,,,,,,,,,,");
+  }
+ }
+ 
+ void po()
+ {
+  int val;
+  if(isempty())
+  {
+   printf("stack empty");
+  }
+  else
+  {
+   val=s1.a[s1.top];
+   s1.top--;
+   printf("pop succ..........");
+   printf("Deleted element=%d",val);
+  }
+ }
+ 
+ void display()
+ {
+  for(i=top;i>=0;i--)
+  {
+   printf("%d\t",s1.a[i]);                 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvimppppp
+  }
+ }
+
+int main()
+{
+ int i,num,ch;
+ do
+ {
+ printf("1-push 2-pop 3-display");
+ printf("Enetr choice-");
+ scanf("%d",&ch);
+ switch(ch)
+ {
+  case 1:printf("enter numbrt");
+       scanf("%d",&num);
+       push(num);
+       break;
+  case 2:
+       pop();    
+       break;
+  case 3:
+       display()
+      break;
+ }
+ }while(ch<4);
+}
+
+Slip 16_1: Sort a random array of n integers (accept the value of n from user) in ascending
+order by using Counting sort algorithm
+
+INCOMPLETE.......................
+
+Slip 17_1 : 1 Implement a list library (singlylist.h) for a singly linked list. Create a linked
+list, reverse it and display reversed linked list
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{              //strcture(self referential structure)
+ int data;
+ struct node *next;
+};
+
+ struct node *create(struct node *head)  //datatype,function name,variable
+ {
+  int i,n;
+  struct node *newnode,*temp;
+  printf("Enter Limit-");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+    newnode=(struct node *)malloc(sizeof(struct node));
+    printf("Enter Value-");         //create newnode&insert value
+    scanf("%d",&newnode->data);    //next null kela.
+    newnode->next=NULL;
+    
+    if(head==NULL)       // only first time head null asto.
+    {
+     head=newnode;   //head ani temp la newnode la nela.
+     temp=newnode;
+    }
+    else
+    {
+     temp->next=newnode;   //temp cha next newnode la jodla.
+     temp=newnode;        //temp la newnode la nela.
+    }
+  }
+    return head;   //loop chya baher yeun return head kela.
+ } 
+   void reverse(struct node *head)
+   {
+    int cnt=0,i;
+    struct node *temp;
+    for(temp=head;temp!=NULL;temp=temp->next)
+    {
+     cnt++;
+    }
+    while(cnt>0)
+    {
+     for(i=1,temp=head;i<cnt;i++)
+     {
+      temp=temp->next;
+     }
+     printf("%d\t ",temp->data);
+     cnt--;
+    }
+   }
+   int main()
+   {
+    struct node *head=NULL;      ///////////////////vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvimp
+    head=create(head);
+     reverse(head);
+   }
+ 
+
+OOOOORRRRRRRRRRRRRRRRRRRR
+/*struct node* reverse(struct node* head)
+{
+ struct node *temp1=NULL;
+ struct node *temp2=NULL;
+ while(head!=NULL)
+ {
+  temp2=head->next;
+  head->next=temp1;
+  temp1=head;
+  head=temp2;
+ }
+ return temp1;
+}*/
+
+/////////////////OR-WE CAN USE SORTING METHOD TO REVERE LINKED LIST
+Slip 18_2 : Write a program that multiply two single variable polynomials. Each
+polynomial should be represented as a list with linked list implementation
+INcomplete..........
+
+##slip 19_2. There are lists where insertion should ensure the ordering of data elements.
+Since the elements are in ascending order the search can terminate once equal
+or greater element is found. Implement a doubly linked list of ordered integers
+(ascending/descending) with insert, search and display operations.
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{              //strcture(self referential structure)
+ int data;
+ struct node *next;
+};
+
+ struct node *create(struct node *head)  //datatype,function name,variable
+ {
+  int i,n;
+  struct node *newnode,*temp;
+  printf("Enter Limit-");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+    newnode=(struct node *)malloc(sizeof(struct node));
+    printf("Enter Value-");         //create newnode&insert value
+    scanf("%d",&newnode->data);    //next null kela.
+    newnode->next=NULL;
+    
+    if(head==NULL)       // only first time head null asto.
+    {
+     head=newnode;   //head ani temp la newnode la nela.
+     temp=newnode;
+    }
+    else
+    {
+     temp->next=newnode;   //temp cha next newnode la jodla.
+     temp=newnode;        //temp la newnode la nela.
+    }
+  }
+    return head;   //loop chya baher yeun return head kela.
+ } 
+   void display(struct node *head)
+   {
+    struct node *temp;
+    for(temp=head;temp!=NULL;temp=temp->next)
+    {
+      printf("%d\t",temp->data);
+    }
+   }
+struct node *insert(struct node *head,int num,int pos)
+       {
+        struct node*newnode,*temp;
+        int i,pos;
+        if(pos==1)
+        {
+         newnode=(struct node*)malloc(sizeof(struct node));
+         newnode->data=num;          //LOGIC insert BEGNING......
+         newnode->next=head;
+         head=newnode;
+        }
+        else
+        {
+          newnode=(struct node*)malloc(sizeof(struct node));
+          newnode->data=num;  //LOGIC insert BEGNING......
+          for(i=1,temp=head;i<(pos-1),temp->next!=NULL;i++,temp=temp->next);  
+          newnode->next=temp->next;
+          temp->next=newnode;
+        }
+        return head;
+       }
+       
+   int search(struct node *head,int num)
+       {
+        struct node *temp;
+        int i;
+        for(temp=head,i=1;temp!=NULL;temp=temp->next,i++)
+        {
+         if(temp->data>num)
+         {
+          return i;
+         }
+       }
+       return i;
+       }
+      
+    int main()
+   {
+   int ch,num,pos;
+   struct node *head=NULL;
+  do
+  {
+   printf("\n1-:CREATE \n2-:DISPLAY \n3-:INSERT" );
+   printf("\nEnter Choice-:");
+   scanf("%d",&ch);
+   switch(ch)
+   {
+    case 1:
+         head=create(head);
+         break;
+    case 2:
+         display(head);
+         break;
+    case 3:
+         printf("Enter no to insert");
+         scanf("%d",&num);
+         pos=search(head,num);
+         printf("pos=%d",pos);
+         head=insert(head,num,pos);
+  }
+  }while(ch<4);
+}
+////////////////////////////incomplet
+
+##Slip 20_2, Slip 29_2 :There are lists where new elements are always appended at the endof the list. The list can be implemented as a circular list with the external pointer pointing to
+the last element of the list. Implement singly linked circular list of integers with append and
+display operations. The operation append(L, n), appends to the end of the list, n integers
+accepted from user.
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct node
+ {
+  int data;
+  struct node *next;
+ }NODE;
+ #define NODEALLOC (NODE *)malloc(sizeof(NODE))
+//1]-
+ NODE *create(NODE *list)
+ { 
+  NODE *newnode,*temp;
+  int i,n;
+  printf("Enter Limt");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+   newnode=NODEALLOC;
+   printf("Enter value:");
+   scanf("%d",&newnode->data);
+   if(list==NULL)
+   {
+    list=temp=newnode;
+    newnode->next=list;
+   }
+   else
+   {
+     temp->next=newnode;
+     temp=newnode;
+     newnode->next=list;
+   }
+  }
+  return  list;
+ }
+//2}-
+  void display(NODE *list)
+  {
+  NODE *temp;
+  temp=list;
+  do
+  {
+   printf("%d\t",temp->data);
+   temp=temp->next;
+  }while(temp!=list); 
+  }
+  NODE *insertend(NODE *list,int num)
+  {
+   NODE *temp,*newnode;
+   newnode=NODEALLOC;
+   newnode->data=num;
+   for(temp=list;temp->next!=list;temp=temp->next);
+   newnode->next=list;
+   temp->next=newnode;
+   return list;
+  }
+  int main()
+ {
+ int i,n,ch,pos,num;
+ NODE *list=NULL;
+ do
+ {
+ printf("\n1-:CREATE \n2-:DISPLAY \n3-:INSERT BEG \n4-:INSERT END \n5-:INSERT     MIDDLE \n6-:DELETE BEG \n7-:DELETE END \n8-:DELETE MIDDLE \n9-:SEARCH");
+   
+ printf("Enter choice-");
+ scanf("%d",&ch);
+ switch(ch)
+  {
+  case 1: list=create(list);
+         break;
+  case 2: display(list);
+         break;
+case 3:
+          printf("Enter No to insert end=");
+          scanf("%d",&num);
+          list=insertend(list,num);
+          break;
+    }
+    }while(ch<4);
+    }
+
+
+
+Slip 21_2, Slip 24_2 :Read the data from the file “employee.txt” and sort on names in
+alphabetical order (use strcmp) using insertion sort or selection sort.
+//selection sort.......
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+ struct employee
+ {
+  char name[20];
+  int age;
+  float salary;
+ }e1[100];
+ FILE *fp1;
+ int i=0,n;
+ fp1=fopen("employee.txt","r");
+ if(fp1==NULL)
+ {
+  printf("file not found");
+  exit(0);
+ }
+ while(!feof(fp1))
+ {
+ fscanf(fp1,"%s%d%f",e1[i].name,&e1[i].age,&e1[i].salary);
+ i++;
+ }
+ n=i;            ////////////////////////vvvvvvvvvvvvvvvvvvvvvvvvvvvvvimp...........
+ char min[20],t[20];
+ int index,j;
+ for(i=0;i<n;i++)
+ {
+  strcpy(min,e1[i].name);
+  index=i;
+    for(j=i;j<n;j++)
+    { 
+     if(strcmp(e1[j].name,min)>0)
+      {
+       strcpy(min,e1[j].name);
+       index=j;
+       }
+      }
+       strcpy(t,e1[i].name);
+       strcpy(e1[i].name,e1[index].name);
+       strcpy(e1[index].name,t);
+      }
+  printf("Sorted names=");
+  for(i=0;i<n;i++)
+  {
+   printf("%s\t",e1[i].name);
+  }
+}
+
+
+
+
+
+SLIP-21.2-Write a program that reverses a string of characters. The function should use a
+stack library (cststack.h). Use a static implementation of the stack
+VVVVVVVVVVVVVVVVVVVVVIMP=>
+=>STACK ALWAYS SHOW ANY STRING IN REVERESE HECE ON DISPLAY STACK
+
+#include<stdio.h>
+struct stack
+{
+char a[MAX];
+int top;
+}s1;
+void init()
+{
+s1.top==-1;
+}
+int isempty()
+{
+if(s1.top==-1)
+return 1;
+else
+return 0;
+}
+int isfull()
+{
+if(s1.top==MAX-1)
+return 1;
+else
+return 0;
+}
+void push(char ch)
+{
+if(isfull())
+printf("Stack is full");
+else
+{
+top++;
+s1.a[s1.top]=ch;
+}
+}
+char pop()
+{
+char ch;
+if(isempty())
+printf("Stack is empty");
+else
+{
+ch=s1.a[s1.top];
+s1.top--;
+return ch;
+}
+void display()
+{
+ int i;
+ for(i=s.top;i>=0;i--)
+ {
+  printf("%c",s.data[i]); impppppppppppppppppppppppppppppppppppp
+ }
+}
+
+
+#include<stdio.h>
+#include"stack.h"
+int main()
+{
+init();
+char s[20];
+int i;
+printf("Enter String: ");
+scanf("%s",&s);
+for(i=0;s[i]!='\0';i++)
+{
+push(s[i]);
+}
+printf("Reversed string: ");
+
+disp();
+
+}
+
+
+
+##Slip 22_2: Read the data from file 'cities.txt' containing names of cities and their STD
+codes. Accept a name of the city from user and use sentinel linear search algorithm to check
+whether the name is present in the file and output the STD code, otherwise output “city not
+in the list”
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<stddef.h>
+int main()
+{
+ struct city
+ {
+  char name[30];
+  int scode;
+ }c1[100];
+ 
+ FILE *fp1;    //DECLRE
+ int i=0,n;
+ char cname[30];
+ fp1=fopen("cities.txt","r");         //OPEN
+ if(fp1==NULL)
+ {                    //CHECK
+  printf("file not found");
+  exit(0);
+ }
+ while(!feof(fp1))
+ {                                //read
+  fscanf(fp1,"%d%s",&c1[i].scode,c1[i].name);                  //vvvvv imp fp1,
+  i++;
+  //<b>warning: </b></span>passing argument 2 
+  //4 |   fscanf("%s%d",&c1[i].name,&c1[i].scode);
+   //   |                 ^~~~~~~~~~~
+  //THIS ERROR CAN GIVE THE FSCANF HAVE TWO ARGUMENT (fp1,%dsf)
+ }
+ 
+ 
+n=i;
+printf("Enter City name to search");
+scanf("%s",cname);
+strcpy(c1[n].name,cname);
+i=0;                   //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvvvvvvvvvvvvvvvvvimp 
+//i=0 karava lagel...............................
+while(strcmp(c1[i].name,cname)!=0)
+{
+  i++;
+}
+ if(i==n)
+ {
+  printf("name is not found");
+ }
+ else
+ {
+  printf("name is found.......");
+  }
+ fclose(fp1);
+}
+
+
+##Slip 23_2: Read the data from file ‘sortedcities.txt’ containing sorted names of cities and
+their STD codes. Accept a name of the city from user and use binary search algorithm to
+check whether the name is present in the file and output the STD code, otherwise output
+“city not in the list”.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+ struct city
+ {
+  int scode;
+  char name[20];
+ }c1[100];
+ FILE *fp1;
+ int i=0,n,top,bottom,mid,flag=0;
+ char cname[20];
+ fp1=fopen("sorted cities.txt","r");
+ if(fp1==NULL)
+ {
+  printf("file not found");
+  exit(0);
+ }
+ while(!feof(fp1))
+ {
+ fscanf(fp1,"%d%s",&c1[i].scode,c1[i].name);
+ i++;
+ }
+ n=i;
+ i=0;
+ printf("Enter city to search-");
+ scanf("%s",cname);
+ top=0;
+ bottom=n-1;
+ while(top<=bottom)
+ {
+  mid=(top+bottom)/2;
+   if(strcmp(c1[mid].name,cname)==0)
+   {
+    flag=1;
+    break;
+   }
+   if(strcmp(c1[mid].name,cname)<0)
+   {
+    top=mid+1;
+   }
+   else
+   {
+    bottom=mid-1;
+   }
+ }
+ if(flag==1)     //ONLY USE DOUBLE EQUAL TO SYMBOL
+ {
+  printf("Number is found");
+ }
+ else
+ printf("Number is not found");
+}
+
+
+
+Slip27_1 : Read the data from the file and sort on names in alphabetical order (use strcmp)
+using Merge sort and write the sorted data to another file 'sortedemponname.txt'
+INCOMPLETE.....................................
+
+Slip 27_2 : Write a program that adds two single variable polynomials. Each polynomial
+should be represented as a list with linked list implementation.
+INCOMPLETE.........................
+
+Slip 30_2 :Write a program that merges two ordered linked lists into third new list. When two lists
+are merged the data in the resulting list are also ordered. The two original lists should be left
+unchanged. That is merged list should be new one. Use linked implementation.
+
+INCOMPLETE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+
+
 
